@@ -38,7 +38,7 @@ static void
 do_app_file(GHashTable *ht, const gchar *file)
 {
     GKeyFile *f;
-    gchar *name, *icon, *action,*dot;
+    gchar *name, *icon, *action,*dot, *term;
     gchar **cats, **tmp;
     xconf *ixc, *vxc, *mxc;
     
