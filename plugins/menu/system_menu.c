@@ -4,6 +4,7 @@
 #include <glib/gstdio.h>
 #include <string.h>
 #include <time.h>
+#include <stdlib.h>
 
 #include "panel.h"
 #include "xconf.h"
