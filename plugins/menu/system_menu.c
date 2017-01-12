@@ -86,30 +86,7 @@ do_app_file(GHashTable *ht, const gchar *file)
         if (dot[1] != '\0')
             dot[0] = dot[1] = ' ';
     }
-#if defined __linux__
-    if ((term =  g_key_file_get_string(f, desktop_ent, "Terminal", NULL)))
-    {
-      if (strcmp("true", term) == 0)
-      {
-        g_free(term);
-        term = getenv("TERM");
-        term = (char*) g_malloc(strlen(action) + strlen(term));
-        g_free(action);
-        action = term;
-        action[0] = '\0';
-        term = getenv("TERM");
-        strncat(action, term, strlen(term));
-        strncat(action, " ", 2);
-        term = g_key_file_get_string(f, desktop_ent, "Exec", NULL);
-        strncat(action, term, strlen(term));
-      }
-      else
-      {
-        g_free(term);
-      }
-    }
-#endif
-DBG("action: %s\n", action);
+    DBG("action: %s\n", action);
     /* if icon is NOT an absolute path but has an extention,
      * e.g. firefox.png, then drop an extenstion to allow to load it
      * as themable icon */
