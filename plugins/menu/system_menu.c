@@ -33,8 +33,6 @@ static cat_info main_cats[] = {
     { "Development","applications-development", c_("Development") },
 };
 
-extern char* termial;
-
 static void
 do_app_file(GHashTable *ht, const gchar *file)
 {
@@ -87,25 +85,6 @@ do_app_file(GHashTable *ht, const gchar *file)
         if (dot[1] != '\0')
             dot[0] = dot[1] = ' ';
     }
-#if defined __linux__
-    char* term = NULL;
-    if ((term = g_key_file_get_string(f, desktop_ent, "Terminal", NULL)))
-    {
-        if (!(g_strcmp0(term, "true")))
-        {
-          g_free(term);
-          if (terminal)
-          {
-            term = action;
-            if ((action = g_strdup_printf("%s %s", terminal, action)))
-              g_free(term);
-          }
-        }
-        else
-          g_free(term);
-    }
-#endif
-
     DBG("action: %s\n", action);
     /* if icon is NOT an absolute path but has an extention,
      * e.g. firefox.png, then drop an extenstion to allow to load it
