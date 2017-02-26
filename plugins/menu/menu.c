@@ -47,7 +47,6 @@ menu_expand_xc(xconf *xc, menu_priv *m)
             xconf_append_sons(nxc, smenu_xc);
             xconf_del(smenu_xc, FALSE);
             m->has_system_menu = TRUE;
-            g_free(terminal);
             continue;
         }
         if (!strcmp(cxc->name, "include"))
